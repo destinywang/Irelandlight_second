@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Irelandlight-second:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="cake-common-second.war">
+      <element id="artifact" artifact-name="Irelandlight-second:war exploded" />
+    </root>
+  </artifact>
+</component>
