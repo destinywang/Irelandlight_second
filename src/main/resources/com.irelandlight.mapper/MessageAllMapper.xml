@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.mapper.mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.irelandlight.mapper.MessageAllMapper">
+
+    <select id="findUserList" resultType="com.irelandlight.vo.CustomMessageAll">
+      SELECT tb_consumer.id as userID,tb_consumer.nick_name as userNickName,tb_consumer.head_img_url as userHeader,A.content as userRecord,A.type as type
+      FROM tb_consumer,(SELECT * FROM tb_message ORDER BY tb_message.id DESC) A
+      WHERE ((A.from_id = tb_consumer.id)OR(A.to_id = tb_consumer.id))
+      GROUP BY tb_consumer.id
+      ORDER BY A.create_time DESC
+    </select>
+
+    <select id="findUserAll" resultType="java.lang.Long">
+        SELECT id FROM tb_consumer
+    </select>
+    
+    <insert id="insertMessageAll">
+      INSERT INTO tb_message(from_id,to_id,content,type) VALUES(#{0},#{1},#{2},#{3})
+    </insert>
+
+    <select id="findHistoryMessageAll" resultType="com.irelandlight.vo.MessageAll">
+        SELECT content,type,create_time FROM tb_message WHERE type in(3,4) GROUP  BY create_time
+    </select>
+</mapper>

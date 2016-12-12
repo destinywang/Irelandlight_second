@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.mapper.mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.irelandlight.mapper.MessageSimpleMapper">
+
+    <select id="findHistoryMessageSimple"  resultType="com.irelandlight.vo.MessageSimple">
+      SELECT from_id,to_id,content,type FROM tb_message WHERE (from_id = #{0} OR to_id = #{0} ) AND (from_id = #{1} OR to_id = #{1})
+    </select>
+
+    <select id="findCustomMessage" parameterType="java.lang.Long" resultType="com.irelandlight.vo.CustomMessageSimple">
+        SELECT id as userID,nick_name as userNickname,telephone as userPhone,head_img_url
+                  as userHeader FROM tb_consumer WHERE id = #{id}
+    </select>
+
+    <select id="findPurchaseHistory" parameterType="java.lang.Long" resultType="com.irelandlight.vo.PurchaseHistory">
+        SELECT tb_consumer_goods_relation.goods_id,tb_goods.name,tb_consumer_goods_relation.create_time FROM
+        tb_consumer_goods_relation,tb_goods WHERE (tb_consumer_goods_relation.goods_id = tb_goods.id AND
+        tb_consumer_goods_relation.goods_id IN(SELECT goods_id FROM tb_consumer_goods_relation WHERE consumer_id = 1002)
+        AND (consumer_id = 1002))
+    </select>
+
+    <select id="insertMessageSimple">
+        INSERT INTO tb_message(from_id,to_id,content,type) VALUES(#{0},#{1},#{2},#{3})
+    </select>
+</mapper>

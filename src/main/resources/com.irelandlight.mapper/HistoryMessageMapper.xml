@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.mapper.mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.irelandlight.mapper.HistoryMessageMapper">
+
+    <!--管理员id 后期从session 取得-->
+    <sql id="insert">
+        <if test="productor_id != 0 and title != null and title!=' ' and content!=null and content != '' ">
+            INSERT INTO tb_news(productor_id,title,content) VALUES(1,#{title},#{content})
+        </if>
+    </sql>
+
+    <select id="findHistoryMessage" resultType="com.irelandlight.vo.News">
+        SELECT title,content FROM tb_news WHERE visibility = 0
+    </select>
+
+    <insert id="insertMessage" parameterType="com.irelandlight.vo.News">
+        <!--<where>-->
+            <!--<include refid="insert"/>-->
+        <!--</where>-->
+        INSERT INTO tb_news(productor_id,title,content) VALUES(1,#{title},#{content})
+    </insert>
+
+    <update id="deleteMessage">
+        UPDATE tb_news SET visibility = 1 WHERE title=#{title} AND content = #{content}
+    </update>
+</mapper>
