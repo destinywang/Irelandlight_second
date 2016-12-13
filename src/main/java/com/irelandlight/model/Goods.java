@@ -5,11 +5,7 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 /**
- * Created  with Intellij IDEA.
- * User: Ele_Chen
- * Date: 2016/12/3
- * Time: 11:12
- * Description: 商品表 .
+ * Created by mac on 2016/12/3.
  */
 public class Goods {
     private Long id;                //蛋糕id
@@ -19,13 +15,15 @@ public class Goods {
     private Integer isPutaway;      //是否上架  0表示未上架，1表示上架
     private String name;            //蛋糕名称
     private String description;     //蛋糕描述
-    private BigDecimal price;       //单价
     private String perference;      //蛋糕偏好
     private String use;             //蛋糕用途
     private String taste;           //蛋糕口味
-    private String size;            //蛋糕尺寸
     private Integer quantity;       //库存
     private Integer saleCount;      //销售量
+    private Integer weight;         //权重系数
+    private Integer status;         //商品状态
+    private double minPrice;        //商品的最小价格
+
 
     public Long getId() {
         return id;
@@ -83,14 +81,6 @@ public class Goods {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getPerference() {
         return perference;
     }
@@ -115,13 +105,6 @@ public class Goods {
         this.taste = taste;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
 
     public Integer getQuantity() {
         return quantity;
@@ -147,7 +130,40 @@ public class Goods {
         this.weight = weight;
     }
 
-    private Integer weight;         //蛋糕权重
+    public Integer getStatus() {
+        return status;
+    }
 
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", lastUpdate=" + lastUpdate +
+                ", visibility=" + visibility +
+                ", isPutaway=" + isPutaway +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", perference='" + perference + '\'' +
+                ", use='" + use + '\'' +
+                ", taste='" + taste + '\'' +
+                ", quantity=" + quantity +
+                ", saleCount=" + saleCount +
+                ", weight=" + weight +
+                ", status=" + status +
+                ", minPrice=" + minPrice +
+                '}';
+    }
 }

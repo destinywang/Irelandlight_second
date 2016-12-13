@@ -1,0 +1,1265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - cake_data@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="cake_data">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="java_data"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="performance_schema"/>
+    <schema id="6" name="test"/>
+    <table id="7" parent="1" name="tb_address"/>
+    <table id="8" parent="1" name="tb_comment"/>
+    <table id="9" parent="1" name="tb_consumer"/>
+    <table id="10" parent="1" name="tb_consumer_goods_relation"/>
+    <table id="11" parent="1" name="tb_coupon"/>
+    <table id="12" parent="1" name="tb_goods"/>
+    <table id="13" parent="1" name="tb_goods_image"/>
+    <table id="14" parent="1" name="tb_goods_size"/>
+    <table id="15" parent="1" name="tb_history"/>
+    <table id="16" parent="1" name="tb_home_rotation"/>
+    <table id="17" parent="1" name="tb_login_ticket"/>
+    <table id="18" parent="1" name="tb_message"/>
+    <table id="19" parent="1" name="tb_news"/>
+    <table id="20" parent="1" name="tb_order"/>
+    <table id="21" parent="1" name="tb_order_goods_relation"/>
+    <table id="22" parent="1" name="tb_productor"/>
+    <table id="23" parent="1" name="tb_productor_log"/>
+    <table id="24" parent="1" name="tb_shop_car"/>
+    <table id="25" parent="1" name="tb_shop_car_goods_relation"/>
+    <table id="26" parent="1" name="tb_reply"/>
+    <column id="27" parent="7" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="28" parent="7" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="29" parent="7" name="last_update">
+      <comment>最后更新</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="30" parent="7" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(3) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="31" parent="7" name="province">
+      <comment>省份</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="32" parent="7" name="city">
+      <comment>城市</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="33" parent="7" name="district">
+      <comment>区县</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="34" parent="7" name="street">
+      <comment>街道</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="35" parent="7" name="post">
+      <comment>邮编</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="36" parent="7" name="detail">
+      <comment>详细地址</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="37" parent="7" name="consumer_id">
+      <comment>消费者表的逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="38" parent="7" name="consumer_name">
+      <comment>收货人姓名，未必会是注册用户的真实姓名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="39" parent="7" name="consumer_phone">
+      <comment>收货人联系方式</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="40" parent="7" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="41" parent="7" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="42" parent="7" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="43" parent="7" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="44" parent="8" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="45" parent="8" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="46" parent="8" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="47" parent="8" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="48" parent="8" name="content">
+      <comment>评论内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="49" parent="8" name="consumer_id">
+      <comment>消费者表主键做逻辑外键，与productor_id互斥</comment>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="50" parent="8" name="goods_id">
+      <comment>商品表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <index id="51" parent="8" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="52" parent="8" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="53" parent="8" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="54" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="55" parent="9" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="56" parent="9" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="57" parent="9" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="58" parent="9" name="visibility">
+      <comment>是否可见</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(3) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="59" parent="9" name="user_name">
+      <comment>用户名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="60" parent="9" name="password">
+      <comment>密码</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="61" parent="9" name="salt">
+      <comment>盐值</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="62" parent="9" name="nick_name">
+      <comment>昵称</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="63" parent="9" name="head_img_url">
+      <comment>用户头像链接</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="64" parent="9" name="score">
+      <comment>用户积分</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="65" parent="9" name="wallet">
+      <comment>余额</comment>
+      <mandatory>1</mandatory>
+      <data-type>decimal(11,2) unsigned|0</data-type>
+      <default-expression>&apos;0.00&apos;</default-expression>
+    </column>
+    <column id="66" parent="9" name="gender">
+      <comment>性别</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(5)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="67" parent="9" name="email">
+      <comment>电子邮件</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="68" parent="9" name="telephone">
+      <comment>联系方式</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="69" parent="9" name="birthday">
+      <comment>生日</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="70" parent="9" name="default_address_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <index id="71" parent="9" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="72" parent="9" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="73" parent="9" name="idx_password">
+      <columns>password</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="74" parent="9" name="idx_user_name">
+      <columns>user_name</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="75" parent="9" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="76" parent="10" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="77" parent="10" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="78" parent="10" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="79" parent="10" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+    </column>
+    <column id="80" parent="10" name="consumer_id">
+      <comment>消费者表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="81" parent="10" name="goods_id">
+      <comment>商品表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="82" parent="10" name="size">
+      <comment>商品大小</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="83" parent="10" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="84" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="85" parent="11" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="86" parent="11" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="87" parent="11" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="88" parent="11" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="89" parent="11" name="target">
+      <comment>消费金额</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="90" parent="11" name="reduce">
+      <comment>优惠金额</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="91" parent="11" name="consumer_id">
+      <comment>消费者表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="92" parent="11" name="content">
+      <comment>满减券内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="93" parent="11" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="94" parent="11" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="95" parent="11" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="96" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="97" parent="12" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="98" parent="12" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="99" parent="12" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="100" parent="12" name="visibility">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="101" parent="12" name="is_putaway">
+      <comment>是否上架</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="102" parent="12" name="name">
+      <comment>商品名称</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="103" parent="12" name="description">
+      <comment>商品描述</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="104" parent="12" name="preference">
+      <comment>蛋糕偏好</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="105" parent="12" name="use">
+      <comment>蛋糕用途</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="106" parent="12" name="taste">
+      <comment>蛋糕口味</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="107" parent="12" name="quantity">
+      <comment>库存</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="108" parent="12" name="sale_count">
+      <comment>销售量</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="109" parent="12" name="weight">
+      <comment>蛋糕权重</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="110" parent="12" name="status">
+      <comment>订单商品状态</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="111" parent="12" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="112" parent="12" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="113" parent="12" name="idx_name">
+      <columns>name</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="114" parent="12" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="115" parent="13" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="116" parent="13" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="117" parent="13" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="118" parent="13" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="119" parent="13" name="goods_id">
+      <comment>商品表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="120" parent="13" name="url">
+      <comment>图片链接</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="121" parent="13" name="position">
+      <comment>在轮播图中的位置</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="122" parent="13" name="idx_goods_id">
+      <columns>goods_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="123" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="124" parent="14" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="125" parent="14" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="126" parent="14" name="last_update">
+      <comment>最后更新</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="127" parent="14" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="128" parent="14" name="goods_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="129" parent="14" name="is_putaway">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="130" parent="14" name="size">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="131" parent="14" name="price">
+      <mandatory>1</mandatory>
+      <data-type>decimal(10,2)|0</data-type>
+    </column>
+    <index id="132" parent="14" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="133" parent="14" name="idx_goods_id">
+      <columns>goods_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="134" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="135" parent="15" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="136" parent="15" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="137" parent="15" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="138" parent="15" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="139" parent="15" name="consumer_id">
+      <comment>消费者表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="140" parent="15" name="goods_id">
+      <comment>商品表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <index id="141" parent="15" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="142" parent="15" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="143" parent="15" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="144" parent="16" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="145" parent="16" name="create_time">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="146" parent="16" name="last_update">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="147" parent="16" name="visibility">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="148" parent="16" name="goods_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="149" parent="16" name="position">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="150" parent="16" name="url">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <key id="151" parent="16" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="152" parent="17" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="153" parent="17" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="154" parent="17" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="155" parent="17" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="156" parent="17" name="consumer_id">
+      <comment>消费者表主键做逻辑外键，与productor_id字段互斥</comment>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="157" parent="17" name="productor_id">
+      <comment>管理者表主键做逻辑外键，与consumer_id互斥</comment>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="158" parent="17" name="expired">
+      <comment>过期时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="159" parent="17" name="ticket">
+      <comment>用户登录凭据(MD5加密)</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="160" parent="17" name="status">
+      <comment>ticket状态</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+    </column>
+    <index id="161" parent="17" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="162" parent="17" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="163" parent="17" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="164" parent="17" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="165" parent="18" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="166" parent="18" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="167" parent="18" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="168" parent="18" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="169" parent="18" name="from_id">
+      <comment>发送方的逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="170" parent="18" name="to_id">
+      <comment>接收方主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="171" parent="18" name="content">
+      <comment>消息内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="172" parent="18" name="type">
+      <comment>消息类型，0为文本，1为图片</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+    </column>
+    <index id="173" parent="18" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="174" parent="18" name="idx_from_id">
+      <columns>from_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="175" parent="18" name="idx_to_id">
+      <columns>to_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="176" parent="18" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="177" parent="19" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="178" parent="19" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="179" parent="19" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="180" parent="19" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="181" parent="19" name="productor_id">
+      <comment>管理员逻辑主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="182" parent="19" name="title">
+      <comment>标题</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="183" parent="19" name="content">
+      <comment>内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="184" parent="19" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="185" parent="19" name="idx_title">
+      <columns>title</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="186" parent="19" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="187" parent="20" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="188" parent="20" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="189" parent="20" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="190" parent="20" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(3) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="191" parent="20" name="order_number">
+      <comment>订单编号</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="192" parent="20" name="consumer_id">
+      <comment>消费者表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="193" parent="20" name="address_id">
+      <comment>订单地址主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="194" parent="20" name="pay_way">
+      <comment>付款方式</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="195" parent="20" name="transfer_way">
+      <comment>配送方式</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="196" parent="20" name="transfer_time">
+      <comment>用户期望的送货时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="197" parent="20" name="gift">
+      <comment>用户希望附赠的礼物</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="198" parent="20" name="table_ware_count">
+      <comment>附赠餐具</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="199" parent="20" name="coupon_id">
+      <comment>优惠券表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="200" parent="20" name="price">
+      <comment>订单的价格</comment>
+      <mandatory>1</mandatory>
+      <data-type>decimal(11,2) unsigned|0</data-type>
+    </column>
+    <column id="201" parent="20" name="transfer_begin">
+      <comment>配送开始时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="202" parent="20" name="transfer_end">
+      <comment>配送结束时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="203" parent="20" name="status">
+      <comment>订单状态</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="204" parent="20" name="remark">
+      <comment>消费者的留言</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="205" parent="20" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="206" parent="20" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="207" parent="20" name="idx_last_update">
+      <columns>last_update</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="208" parent="20" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="209" parent="21" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="210" parent="21" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="211" parent="21" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="212" parent="21" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="213" parent="21" name="order_id">
+      <comment>订单表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="214" parent="21" name="goods_id">
+      <comment>商品表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="215" parent="21" name="size">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="216" parent="21" name="count">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="217" parent="21" name="status">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="218" parent="21" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="219" parent="21" name="idx_order_id">
+      <columns>order_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="220" parent="21" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="221" parent="22" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="222" parent="22" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="223" parent="22" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="224" parent="22" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+    </column>
+    <column id="225" parent="22" name="user_name">
+      <comment>管理员名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="226" parent="22" name="password">
+      <comment>管理员密码</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="227" parent="22" name="salt">
+      <comment>盐值</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <key id="228" parent="22" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="229" parent="23" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="230" parent="23" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="231" parent="23" name="last_update">
+      <comment>最后修改时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="232" parent="23" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="233" parent="23" name="productor_id">
+      <comment>管理员表的外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="234" parent="23" name="content">
+      <comment>操作内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="235" parent="23" name="idx_create_time">
+      <columns>create_time</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="236" parent="23" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="237" parent="24" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="238" parent="24" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="239" parent="24" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="240" parent="24" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="241" parent="24" name="consumer_id">
+      <comment>消费者表主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <index id="242" parent="24" name="idx_consumer_id">
+      <columns>consumer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="243" parent="24" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="244" parent="25" name="id">
+      <comment>主键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="245" parent="25" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="246" parent="25" name="last_update">
+      <comment>最后更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="247" parent="25" name="visibility">
+      <comment>逻辑删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="248" parent="25" name="shop_car_id">
+      <comment>购物车表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="249" parent="25" name="goods_id">
+      <comment>商品表主键做逻辑外键</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="250" parent="25" name="size">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="251" parent="25" name="count">
+      <comment>每周商品的数量</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="252" parent="25" name="status">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="253" parent="25" name="idx_shop_car_id">
+      <columns>shop_car_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="254" parent="25" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="255" parent="26" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="256" parent="26" name="create_time">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="257" parent="26" name="last_update">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="258" parent="26" name="visibility">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="259" parent="26" name="source_id">
+      <comment>回复表保存对于评论的回复</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="260" parent="26" name="reply">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="261" parent="26" name="from_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <column id="262" parent="26" name="to_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11) unsigned|0</data-type>
+    </column>
+    <key id="263" parent="26" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

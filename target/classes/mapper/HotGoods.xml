@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.irelandlight.mapper.HotGoods">
+    <select id="selectHotGoods" resultType="com.irelandlight.vo.HotGoodsList" >
+        SELECT tb_goods.id,tb_goods.`name`,tb_goods.min_price,tb_goods_image.url
+        FROM tb_goods,tb_goods_image
+        WHERE tb_goods.id=tb_goods_image.goods_id
+        AND tb_goods_image.position=1
+        AND	tb_goods_image.visibility=0
+    </select>
+
+</mapper>

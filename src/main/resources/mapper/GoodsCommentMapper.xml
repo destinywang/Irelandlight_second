@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.irelandlight.mapper.GoodsCommentMapper">
+    <select id="selectGoodsComment" resultType="com.irelandlight.vo.GoodsComment">
+        SELECT tb_comment.id,tb_comment.goods_id,tb_comment.consumer_id,tb_comment.create_time,tb_comment.content
+        FROM tb_comment
+        WHERE tb_comment.goods_id=#{goodsId}
+        AND visibility=0
+    </select>
+
+</mapper>

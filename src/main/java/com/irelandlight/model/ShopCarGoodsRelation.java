@@ -3,14 +3,9 @@ package com.irelandlight.model;
 import java.util.Date;
 
 /**
- * Created  with Intellij IDEA.
- * User: Ele_Chen
- * Date: 2016/12/3
- * Time: 10:06
- * Description: 购物车详情 .
+ * Created by mac on 2016/12/3.
  */
 public class ShopCarGoodsRelation {
-
     private Long id;
     private Date createTime;    //创建时间
     private Date lastUpdate;    //最后修改时间
@@ -18,6 +13,8 @@ public class ShopCarGoodsRelation {
     private Long shopCarId;     //购物车表主键做逻辑外键
     private Long goodsId;       //商品表主键做逻辑外键
     private Integer count;      //每周商品的数量
+    private Integer size;       //商品规格
+    private Integer status;     //商品状态
 
     public Long getId() {
         return id;
@@ -73,5 +70,21 @@ public class ShopCarGoodsRelation {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

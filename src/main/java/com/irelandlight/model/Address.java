@@ -3,11 +3,7 @@ package com.irelandlight.model;
 import java.util.Date;
 
 /**
- * Created  with Intellij IDEA.
- * User: Ele_Chen
- * Date: 2016/12/3
- * Time: 11:12
- * Description: 客户收货地址表 .
+ * Created by mac on 2016/12/3.
  */
 public class Address {
     private Long id;
@@ -21,7 +17,6 @@ public class Address {
     private String post;            //邮编
     private String detail;          //详细地址
     private Long consumerId;        //消费者表单的主键做逻辑外键
-    private Integer isDefault;      //默认地址标示
     private String consumerName;    //收货人姓名
     private String consumerPhone;   //收货人联系方式
 
@@ -113,14 +108,6 @@ public class Address {
         this.consumerId = consumerId;
     }
 
-    public Integer getIsDefault() {
-        return isDefault;
-    }
-
-    public void setIsDefault(Integer isDefault) {
-        this.isDefault = isDefault;
-    }
-
     public String getConsumerName() {
         return consumerName;
     }
@@ -136,4 +123,11 @@ public class Address {
     public void setConsumerPhone(String consumerPhone) {
         this.consumerPhone = consumerPhone;
     }
+
+
+
+
+
+
+
 }
