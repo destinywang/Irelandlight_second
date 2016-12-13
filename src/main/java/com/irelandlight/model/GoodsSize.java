@@ -76,6 +76,6 @@ public class GoodsSize {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price= price;
     }
 }
