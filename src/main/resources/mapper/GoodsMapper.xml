@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.irelandlight.dao.GoodsMapper">
+    <!-- 为Dao方法提供sql语句配置 -->
+
+
+    <select id="selectGoodsCount" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM tb_goods
+    </select>
+
+    <select id="upedGoodsCount" resultType="java.lang.Integer">
+        SELECT COUNT (*) FROM tb_goods WHERE is_putaway=1
+    </select>
+
+    <select id="unUpGoodsCount" resultType="java.lang.Integer">
+        SELECT COUNT (*) FROM tb_goods where is_putaway=0
+    </select>
+
+    <select id="selectCommentCount" resultType="java.lang.Integer">
+        SELECT count(*) FROM tb_comment
+    </select>
+    <!--查询上已架的商品-->
+    <select id="selectUpedGoods" resultType="com.irelandlight.model.Goods">
+        SELECT * FROM tb_goods WHERE is_putaway=0
+    </select>
+    <!--查询为上架的商品-->
+    <select id="selectUnUpGoods" resultType="com.irelandlight.model.Goods">
+        SELECT * FROM tb_goods WHERE is_putaway=0
+    </select>
+
+
+    <insert id="insertGoods" parameterType="com.irelandlight.model.Goods">
+        INSERT INTO tb_goods
+        (create_time,last_update,visibility,is_putaway,tb_goods.name,description,preference,
+        tb_goods.use,taste,quantity,sale_count,weight,tb_goods.status)
+        VALUE (now(),sysdate(),0,0,
+        #{goods.name},#{goods.description},#{goods.preference},
+        #{goods.use},#{goods.taste},#{goods.quantity},
+        #{goods.saleCount},#{goods.weight},#{goods.status})
+
+    </insert>
+</mapper>
