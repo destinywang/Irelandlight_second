@@ -4,10 +4,36 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.irelandlight.dao.OrderMapper">
     <!-- 为Dao方法提供sql语句配置 -->
-
-    <select id="selectOrderCount" resultType="java.lang.Integer" >
-        SELECT COUNT(*) FROM tb_order
+    <!--各个状态的订单数量-->
+    <select id="selectUnhandleOrder" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM tb_order WHERE status=0
     </select>
 
+    <select id="selectUnpayOrder" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM tb_order WHERE status=1
+    </select>
+
+
+    <select id="selectUndispatchOrder" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM tb_order WHERE status=2
+    </select>
+
+    <select id="selectSucceedOrder" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM tb_order WHERE status=3
+    </select>
+
+    <select id="selectCanceledOrder" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM tb_order WHERE status=4
+    </select>
+    <!--查询订单列表-->
+    <select id="selectOrderList" resultType="com.irelandlight.vo.OrderVo">
+       SELECT order_number,nick_name,tb_order.create_time,tb_order.status,tb_order.price
+       FROM tb_order,tb_consumer
+       WHERE tb_order.consumer_id=tb_consumer.id
+    </select>
+    <!--修改订单-->
+    <update id="upDateOrder" parameterType="com.irelandlight.vo.OrderVo">
+
+    </update>
 
 </mapper>

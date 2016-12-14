@@ -11,11 +11,11 @@
     </select>
 
     <select id="upedGoodsCount" resultType="java.lang.Integer">
-        SELECT COUNT (*) FROM tb_goods WHERE is_putaway=1
+       SELECT count(*) FROM tb_goods WHERE is_putaway=1
     </select>
 
     <select id="unUpGoodsCount" resultType="java.lang.Integer">
-        SELECT COUNT (*) FROM tb_goods where is_putaway=0
+        SELECT count(*) FROM tb_goods where is_putaway=0
     </select>
 
     <select id="selectCommentCount" resultType="java.lang.Integer">
@@ -23,7 +23,7 @@
     </select>
     <!--查询上已架的商品-->
     <select id="selectUpedGoods" resultType="com.irelandlight.model.Goods">
-        SELECT * FROM tb_goods WHERE is_putaway=0
+        SELECT * FROM tb_goods WHERE is_putaway=1
     </select>
     <!--查询为上架的商品-->
     <select id="selectUnUpGoods" resultType="com.irelandlight.model.Goods">

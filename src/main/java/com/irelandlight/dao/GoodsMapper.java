@@ -15,7 +15,7 @@ public interface GoodsMapper {
     //为上架商品数量
     Integer upedGoodsCount()throws Exception;
     //查询评论总数
-    Integer commentCount()throws Exception;
+    Integer selectCommentCount()throws Exception;
 
     //查已上架的商品
     List<Goods> selectUpedGoods()throws Exception;
