@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.irelandlight.dao.HistoryMapper">
+    <!-- 为Dao方法提供sql语句配置 -->
+    <select id="findHistoryListByConsumerId" resultType="com.irelandlight.model.vo.HistoryShow" parameterType="java.lang.Long">
+      SELECT tb_goods.name goodsName,
+      tb_history.id goodsId,
+      tb_goods_size.price goodsPrice,
+      tb_goods_size.size,
+      tb_goods_image.url goodsImgUrl
+      FROM tb_goods,tb_goods_size,tb_goods_image,tb_history
+       WHERE tb_goods.id = tb_goods_size.id AND
+       tb_goods.id = tb_goods_image.id AND
+        tb_goods.id = tb_history.goods_id AND
+        tb_history.consumer_id = #{consumerId} AND
+        tb_goods_size.size = "1";
+    </select>
+
+</mapper>

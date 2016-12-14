@@ -16,7 +16,7 @@ public class Coupon {
     private Integer visibility;     //是否逻辑删除
     private Long target;            //消费金额
     private Long reduce;            //优惠金额
-    private Long consumerId;        //消费者表主键做逻辑外键
+          //消费者表主键做逻辑外键
     private String content;         //满减券内容
 
     public Long getId() {
@@ -67,19 +67,25 @@ public class Coupon {
         this.reduce = reduce;
     }
 
-    public Long getConsumerId() {
-        return consumerId;
-    }
-
-    public void setConsumerId(Long consumerId) {
-        this.consumerId = consumerId;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Coupon{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", lastUpdate=" + lastUpdate +
+                ", visibility=" + visibility +
+                ", target=" + target +
+                ", reduce=" + reduce +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

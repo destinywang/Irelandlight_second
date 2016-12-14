@@ -1,7 +1,10 @@
 package com.irelandlight.model;
 
+import com.irelandlight.model.vo.MoreAddress;
+
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created  with Intellij IDEA.
@@ -30,8 +33,28 @@ public class Order {
     private Integer status;         //订单状态
     private String remark;          //消费者的留言
 
+    private Goods goods;          //
+
+    private List<MoreAddress> moreAddressList;  //地址详情
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public List<MoreAddress> getMoreAddressList() {
+        return moreAddressList;
+    }
+
+    public void setMoreAddressList(List<MoreAddress> moreAddressList) {
+        this.moreAddressList = moreAddressList;
     }
 
     public void setId(Long id) {
@@ -172,5 +195,31 @@ public class Order {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", lastUpdate=" + lastUpdate +
+                ", visibility=" + visibility +
+                ", orderNumber='" + orderNumber + '\'' +
+                ", consumerId=" + consumerId +
+                ", addressId=" + addressId +
+                ", payWay=" + payWay +
+                ", transferWay=" + transferWay +
+                ", transferTime='" + transferTime + '\'' +
+                ", gift='" + gift + '\'' +
+                ", tableWareCount=" + tableWareCount +
+                ", couponId=" + couponId +
+                ", price=" + price +
+                ", transferBegin=" + transferBegin +
+                ", transferEnd=" + transferEnd +
+                ", status=" + status +
+                ", remark='" + remark + '\'' +
+                ", goods=" + goods +
+                ", moreAddressList=" + moreAddressList +
+                '}';
     }
 }
