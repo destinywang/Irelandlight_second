@@ -4,17 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.irelandlight.dao.AddressMapper">
     <!-- 为Dao方法提供sql语句配置 -->
+
+   <!-- 查询收货地址的中的收货人-->
     <select id="findConsumerNameById" resultType="String" parameterType="java.lang.Long">
         SELECT consumer_name
         FROM tb_address
-        WHERE consumer_id = #{VALUE}
+        WHERE consumer_id = #{consumerId}
     </select>
 
+  <!--  查询有几条记录-->
     <select id="countAddress" resultType="int">
         SELECT count(*) FROM tb_address
     </select>
-    
-    <insert id="addNewAddress" parameterType="com.irelandlight.model.vo.SaveAddress">
+
+    <!--添加新地址信息-->
+    <insert id="addNewAddress" parameterType="com.irelandlight.model.Address">
         INSERT INTO tb_address(
             consumer_id,
             consumer_name,
@@ -37,7 +41,8 @@
            #{post})
     </insert>
 
-    <select id="findAddressListByConsumerId" resultType="com.irelandlight.model.vo.AddressShow">
+    <!--管理收货地址-->
+    <select id="findAddressListByConsumerId" resultType="com.irelandlight.model.vo.AddressShow" >
 
       SELECT tb_address.id addressId,
       tb_address.consumer_name,
@@ -46,10 +51,17 @@
       tb_address.city,
       tb_address.district,
       tb_address.street,
-      tb_address.detail
+      tb_address.detail,
+      tb_address.post,
+      tb_consumer.default_address_id defaultAddressId
       FROM tb_consumer,tb_address
-      WHERE tb_consumer.default_address_id = tb_address.id
+      WHERE
+      tb_consumer.id = tb_address.consumer_id
       AND tb_address.consumer_id = #{consumerId}
     </select>
 
+    <!--删除地址-->
+    <update id="deleteAddress" parameterType="java.lang.Long">
+        UPDATE tb_address SET visibility = 0 WHERE id = #{adderssId}
+    </update>
 </mapper>

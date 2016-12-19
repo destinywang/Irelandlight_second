@@ -6,7 +6,7 @@
     <!-- 为Dao方法提供sql语句配置 -->
     <select id="findHistoryListByConsumerId" resultType="com.irelandlight.model.vo.HistoryShow" parameterType="java.lang.Long">
       SELECT tb_goods.name goodsName,
-      tb_history.id goodsId,
+      tb_history.id historyId,
       tb_goods_size.price goodsPrice,
       tb_goods_size.size,
       tb_goods_image.url goodsImgUrl
@@ -15,7 +15,15 @@
        tb_goods.id = tb_goods_image.id AND
         tb_goods.id = tb_history.goods_id AND
         tb_history.consumer_id = #{consumerId} AND
-        tb_goods_size.size = "1";
+        tb_goods_size.size = "1" AND
+        tb_history.visibility = 0
     </select>
+
+    <!--删除浏览记录-->
+    <update id="deleteHistory" parameterType="java.lang.Long">
+        UPDATE tb_history
+        SET tb_history.visibility = 1
+         WHERE tb_history.id=#{historyId}
+    </update>
 
 </mapper>

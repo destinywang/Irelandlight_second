@@ -4,6 +4,7 @@ import com.irelandlight.dao.AddressMapper;
 import com.irelandlight.dao.HistoryMapper;
 import com.irelandlight.service.HistoryService;
 import com.irelandlight.model.vo.HistoryShow;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,5 +24,10 @@ public class HistoryServiceImpl implements HistoryService{
     public List<HistoryShow> findHistoryListByConsumerId(Long consumerId) throws Exception {
 
         return historyMapper.findHistoryListByConsumerId(consumerId);
+    }
+
+    public void deleteHistory(@Param("historyId") Long historyId) throws Exception {
+
+        historyMapper.deleteHistory(historyId);
     }
 }

@@ -1,6 +1,7 @@
 package com.irelandlight.dao;
 
 import com.irelandlight.BaseJunitTest;
+import com.irelandlight.model.Address;
 import com.irelandlight.model.vo.AddressShow;
 import com.irelandlight.model.vo.SaveAddress;
 import org.junit.Test;
@@ -13,8 +14,6 @@ import java.util.List;
 /**
  * Created by as on 2016/12/8.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class AddressMapperTest extends BaseJunitTest{
 
 
@@ -30,19 +29,24 @@ public class AddressMapperTest extends BaseJunitTest{
     }
     //添加新地址信息
     @Test
-    public void testAddNewAddress() throws Exception{
-        SaveAddress saveAddress = new SaveAddress();
-        saveAddress.setConsumerId(1003L);
-        saveAddress.setConsumerName("this");
-        saveAddress.setConsumerPhone("110");
-        saveAddress.setProvince("陕西省");
-        saveAddress.setCity("西安市");
-        saveAddress.setDistrict("长安区");
-        saveAddress.setStreet("子午大道");
-        saveAddress.setDetail("西安邮电大学");
-        saveAddress.setPost("710300");
-        System.out.println(saveAddress);
-        addressMapper.addNewAddress(saveAddress);
+    public void testAddNewAddress() {
+        Address address = new Address();
+        address.setVisibility(0);
+        address.setConsumerId(1003L);
+        address.setConsumerName("this");
+        address.setConsumerPhone("110");
+        address.setProvince("陕西省");
+        address.setCity("西安市");
+        address.setDistrict("长安区");
+        address.setStreet("子午大道");
+        address.setDetail("西安邮电大学");
+        address.setPost("710300");
+        System.out.println(address);
+        try {
+            addressMapper.addNewAddress(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Test
     public void testFindAddressListByConsumerId() throws Exception {
@@ -52,5 +56,8 @@ public class AddressMapperTest extends BaseJunitTest{
         System.out.println(addressShowList);
     }
 
-
+    @Test
+    public void testDeleteAddress()throws Exception{
+        addressMapper.deleteAddress(7L);
+    }
 }

@@ -12,6 +12,7 @@ public interface HistoryMapper {
     //查询浏览记录商品信息
     public List<HistoryShow> findHistoryListByConsumerId(Long consumerId)throws Exception;
 
-    //
+    //删除浏览记录
+    public void deleteHistory(@Param("historyId")Long historyId)throws Exception;
 
 }

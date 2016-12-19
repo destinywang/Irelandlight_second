@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -26,6 +27,15 @@ public class HistoryServiceTest extends BaseJunitTest{
         System.out.println(historyShowList);
     }
 
-
+    @Test
+    public void testDeleteHistory()throws Exception{
+        List<Long> historyList = new ArrayList<Long>();
+        historyList.add(0,1L);
+        historyList.add(1,2L);
+        for (int i=0;i<historyList.size();i++){
+            historyService.deleteHistory(historyList.get(i));
+            System.out.println(historyList.get(i));
+        }
+    }
 
 }

@@ -41,6 +41,11 @@
           <element id="library" level="project" name="Maven: com.dyuproject.protostuff:protostuff-api:1.0.8" />
           <element id="library" level="project" name="Maven: com.dyuproject.protostuff:protostuff-runtime:1.0.8" />
           <element id="library" level="project" name="Maven: com.dyuproject.protostuff:protostuff-collectionschema:1.0.8" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.2.2" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.3.1" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.8.0" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.6.2" />
+          <element id="library" level="project" name="Maven: com.qiniu:happy-dns-java:0.1.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

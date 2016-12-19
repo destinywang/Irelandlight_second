@@ -6,7 +6,7 @@
     <!-- 为Dao方法提供sql语句配置 -->
     <select id="findCollectionListByConsumerId" resultType="com.irelandlight.model.vo.CollectionShow" parameterType="java.lang.Long">
     SELECT tb_goods.name goodsName,
-    tb_consumer_goods_relation.id goodsId,
+    tb_consumer_goods_relation.id collectionId,
     tb_goods_size.price goodsPrice,
     tb_goods_size.size,
     tb_goods_image.url goodsImgUrl
@@ -18,7 +18,14 @@
     AND tb_goods.id = tb_goods_image.id
      AND tb_goods.id = tb_consumer_goods_relation.goods_id
      AND tb_consumer_goods_relation.consumer_id = #{consumerId}
-      AND tb_goods_size.size = "1";
+      AND tb_goods_size.size = "1"
+      AND tb_consumer_goods_relation.visibility = 0
      </select>
+    <!--删除收藏-->
+    <update id="deleteCollection" parameterType="java.lang.Long">
+       UPDATE tb_consumer_goods_relation
+       SET visibility = 1
+        WHERE id=#{collectionId}
+    </update>
 
 </mapper>

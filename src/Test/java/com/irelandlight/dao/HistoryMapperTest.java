@@ -25,4 +25,14 @@ public class HistoryMapperTest extends BaseJunitTest{
         System.out.println(historyShowList);
     }
 
+    @Test
+    public void testDeleteHistory()throws Exception{
+        List<Long> historyList = new ArrayList<Long>();
+        historyList.add(0,1L);
+        historyList.add(1,2L);
+        for (int i=0;i<historyList.size();i++){
+            historyMapper.deleteHistory(historyList.get(i));
+            System.out.println(historyList.get(i));
+        }
+    }
 }

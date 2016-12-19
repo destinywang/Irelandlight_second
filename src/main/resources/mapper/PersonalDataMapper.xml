@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.irelandlight.dao.PersonalDataMapper">
+    <!-- 为Dao方法提供sql语句配置 -->
+ <!--查询个人信息-->
+<select id="findPersonalDataByConsumerId" resultType="com.irelandlight.model.vo.PersonalData">
+SELECT tb_consumer.user_name,
+  tb_consumer.nick_name,
+  tb_consumer.gender,
+  tb_consumer.birthday,
+  tb_consumer.telephone,
+  tb_consumer.email
+FROM tb_consumer
+WHERE tb_consumer.id = #{consumerId}
+</select>
+
+  <!--修改用户信息-->
+  <update id="updateNickName"  parameterType="com.irelandlight.model.vo.PersonalData">
+      UPDATE tb_consumer SET nick_name = #{nickName} WHERE tb_consumer.id = #{consumerId}
+  </update>
+  
+</mapper>

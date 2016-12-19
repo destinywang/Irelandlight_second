@@ -1,0 +1,10 @@
+<html>
+<body>
+<h2>Hello World!</h2>
+<form action="">
+    账号<input type="text" name="userName">
+    密码<input type="password" name="password">
+    <input type="submit" value="登录">
+</form>
+</body>
+</html>

@@ -5,7 +5,7 @@ package com.irelandlight.model.vo;
  */
 public class CollectionShow {
     private String goodsName;
-    private Long goodsId;
+    private Long collectionId;
     private Double goodsPrice;
     private String goodsImgUrl;
     private String size;
@@ -18,12 +18,12 @@ public class CollectionShow {
         this.goodsName = goodsName;
     }
 
-    public Long getGoodsId() {
-        return goodsId;
+    public Long getCollectionId() {
+        return collectionId;
     }
 
-    public void setGoodsId(Long goodsId) {
-        this.goodsId = goodsId;
+    public void setCollectionId(Long collectionId) {
+        this.collectionId = collectionId;
     }
 
     public Double getGoodsPrice() {
@@ -54,7 +54,7 @@ public class CollectionShow {
     public String toString() {
         return "CollectionShow{" +
                 "goodsName='" + goodsName + '\'' +
-                ", goodsId=" + goodsId +
+                ", collectionId=" + collectionId +
                 ", goodsPrice=" + goodsPrice +
                 ", goodsImgUrl='" + goodsImgUrl + '\'' +
                 ", size='" + size + '\'' +

@@ -10,7 +10,7 @@ import java.util.Date;
  * Description: 客户收货地址表 .
  */
 public class Address {
-    private Long id;
+    private Long addressId;
     private Date createTime;        //创建时间
     private Date lastUpdate;        //最近一次更新时间
     private Integer visibility;     //是否逻辑删除
@@ -24,12 +24,12 @@ public class Address {
     private String consumerName;    //收货人姓名
     private String consumerPhone;   //收货人联系方式
 
-    public Long getId() {
-        return id;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     public Date getCreateTime() {
@@ -132,7 +132,7 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
+                "addressId=" + addressId +
                 ", createTime=" + createTime +
                 ", lastUpdate=" + lastUpdate +
                 ", visibility=" + visibility +

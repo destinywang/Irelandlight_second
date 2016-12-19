@@ -1,9 +1,11 @@
 package com.irelandlight.service.impl;
 
 import com.irelandlight.dao.AddressMapper;
+import com.irelandlight.model.Address;
 import com.irelandlight.model.vo.AddressShow;
 import com.irelandlight.model.vo.SaveAddress;
 import com.irelandlight.service.AddressService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,14 +35,20 @@ public class AddressServiceImpl implements AddressService{
         return count;
     }
 
-    public void addNewAddress(SaveAddress saveAddress) throws Exception {
+    //添加地址
+    public void addNewAddress(Address address) throws Exception {
        //调用mapper保存地址信息
-        addressMapper.addNewAddress(saveAddress);
+        addressMapper.addNewAddress(address);
 
     }
 
     public List<AddressShow> findAddressListByConsumerId(Long consumerId) throws Exception {
 
         return addressMapper.findAddressListByConsumerId(consumerId);
+    }
+
+    public void deleteAddress(@Param("addressId")Long addressId) throws Exception {
+
+        addressMapper.deleteAddress(addressId);
     }
 }

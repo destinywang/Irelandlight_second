@@ -4,63 +4,84 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.irelandlight.dao.OrderMapper">
     <!-- 为Dao方法提供sql语句配置 -->
+ <!-- 一条订单多条商品，用resultMap-->
+<resultMap id="OrderGoodsResultMap" type="com.irelandlight.model.vo.OrderShow">
+
+  <id column="orderId" property="orderId"/>
+  <result column="orderStatus" property="orderStatus"/>
+<collection property="goodsList" ofType="com.irelandlight.model.vo.GoodsShow">
+  <id column="goodsId" property="goodsId"/>
+  <result column="goodsName" property="goodsName"/>
+  <result column="goodsPrice" property="goodsPrice"/>
+  <result column="goodsNum" property="goodsNum"/>
+  <result column="goodsStatus" property="goodsStatus"/>
+  <result column="goodsImgUrl" property="goodsImgUrl"/>
+</collection>
+
+</resultMap>
+  
  <!--查找某个用户的所有订单详情-->
-<select id="findOrderByConsumerId" resultType="">
-  SELECT
-    tb_consumer.id consumerId,
-    tb_address.id addressId,
-    tb_address.consumer_name consumerName,
-    tb_address.consumer_phone consumerPhone,
-    tb_address.province province,
-    tb_address.city city,
-    tb_address.district district,
-    tb_address.street street,
-    tb_address.post post,
-    tb_address.detail detail,
+<select id="findOrderListByConsumerId"  resultMap="OrderGoodsResultMap">
 
-    tb_order.id orderId,
-    tb_order.order_number orderNumber,
-    tb_order.remark,
-    tb_order.status,
+  SELECT tb_order.id orderId,
+  tb_order.status orderStatus,
+  tb_goods.id goodsId,
+  tb_goods.name goodsName,
+  tb_goods_size.price goodsPrice,
+  tb_goods_size.size goodsSize,
+  tb_order_goods_relation.count goodsNum,
+  tb_goods_image.url goodsImgUrl,
+  tb_order_goods_relation.status goodsStatus
+FROM tb_order,tb_goods,tb_goods_size,tb_order_goods_relation,tb_goods_image
+WHERE tb_order.id = tb_order_goods_relation.order_id
+  AND tb_goods.id = tb_goods_image.goods_id
+  AND tb_order_goods_relation.goods_id = tb_goods_image.goods_id
+  AND tb_goods_size.goods_id = tb_order_goods_relation.goods_id
+  AND tb_goods_size.size = tb_order_goods_relation.size
+  AND tb_goods_image.position = 1
+  AND tb_order.consumer_id = #{consumerId}
+</select>
+   <!--查找某种状态订单信息-->
+<select id="findOneStatusOrderByConsumerId" resultMap="OrderGoodsResultMap">
+  SELECT tb_order.id orderId,
+  tb_order.status orderStatus,
+  tb_goods.id goodsId,
+  tb_goods.name goodsName,
+  tb_goods_size.price goodsPrice,
+  tb_goods_size.size goodsSize,
+  tb_order_goods_relation.count goodsNum,
+  tb_goods_image.url goodsImgUrl,
+  tb_order_goods_relation.status goodsStatus
+FROM tb_order,tb_goods,tb_goods_size,tb_order_goods_relation,tb_goods_image
+WHERE tb_order.id = tb_order_goods_relation.order_id
+  AND tb_goods.id = tb_goods_image.goods_id
+  AND tb_order_goods_relation.goods_id = tb_goods_image.goods_id
+  AND tb_goods_size.goods_id = tb_order_goods_relation.goods_id
+  AND tb_goods_size.size = tb_order_goods_relation.size
+  AND tb_goods_image.position = 1
+  AND tb_order.consumer_id = #{consumerId}
+  AND tb_order.status = #{orderStatus}
+</select>
 
-    tb_coupon.id couponId,
-    tb_coupon.target,
-    tb_coupon.reduce,
-
-    tb_order_goods_relation.id OrderGoodsRelationId,
-    tb_order_goods_relation.goods_id goodsId,
-    tb_order_goods_relation.count goodsCount,
-
-    tb_goods.id goodsId1,
-    tb_goods.`name` goodsName,
-
-    tb_goods_size.id goodsSizeId,
-    tb_goods_size.size goodsSize,
-    tb_goods_size.price goodsPrice,
-
-    tb_goods_image.id  GoodsImageId,
-    tb_goods_image.url goodsImg
-    FROM
-    tb_consumer,
-    tb_order,
-    tb_order_goods_relation,
-    tb_goods,
-    tb_goods_image,
-    tb_goods_size,
-    tb_coupon,
-    tb_address
-    WHERE
-    tb_consumer.id= tb_order.consumer_id
-    AND tb_order_goods_relation.order_id = tb_order.id
-    AND tb_goods.id = tb_order_goods_relation.goods_id
-    AND tb_goods_image.goods_id = tb_goods.id
-    AND tb_goods_size.goods_id = tb_goods.id
-    AND tb_address.id = tb_order.address_id
-    AND tb_order_goods_relation.order_id = tb_order.id
-    AND tb_order_goods_relation.size = tb_goods_size.size
-    AND tb_order_goods_relation.goods_id = tb_goods_size.goods_id
-    AND tb_order.coupon_id = tb_coupon.id
-    AND tb_goods_image.position = 1
-    AND tb_consumer.id = #{consumerId}
+ <!-- 查找待评价状态订单商品信息-->
+<select id="findNotCommentGoodsByConsumerId" resultMap="OrderGoodsResultMap">
+   SELECT tb_order.id orderId,
+  tb_order.status orderStatus,
+  tb_goods.id goodsId,
+  tb_goods.name goodsName,
+  tb_goods_size.price goodsPrice,
+  tb_goods_size.size goodsSize,
+  tb_order_goods_relation.count goodsNum,
+  tb_goods_image.url goodsImgUrl,
+  tb_order_goods_relation.status goodsStatus
+FROM tb_order,tb_goods,tb_goods_size,tb_order_goods_relation,tb_goods_image
+WHERE tb_order.id = tb_order_goods_relation.order_id
+  AND tb_goods.id = tb_goods_image.goods_id
+  AND tb_order_goods_relation.goods_id = tb_goods_image.goods_id
+  AND tb_goods_size.goods_id = tb_order_goods_relation.goods_id
+  AND tb_goods_size.size = tb_order_goods_relation.size
+  AND tb_goods_image.position = 1
+  AND tb_order.consumer_id = #{consumerId}
+  AND tb_order_goods_relation.status = #{goodsStatus}
 </select>
 </mapper>
