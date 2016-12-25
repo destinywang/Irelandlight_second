@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.irelandlight.mapper.ProductorLoginMapper">
+    <!-- String productorLogin(Manager manager)-->
+
+    <select id="productorLogin" resultType="com.irelandlight.vo.Manager" parameterType="String">
+        SELECT tb_productor.`password`,SELECT tb_productor.user_name
+        FROM tb_productor
+        WHERE tb_productor.user_name=#{userName}
+    </select>
+</mapper>

@@ -70,4 +70,17 @@ public class HomeRotation {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "HomeRotation{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", lastUpdate=" + lastUpdate +
+                ", visibility=" + visibility +
+                ", goodsId=" + goodsId +
+                ", position=" + position +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

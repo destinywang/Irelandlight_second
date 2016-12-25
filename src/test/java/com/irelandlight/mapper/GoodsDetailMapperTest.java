@@ -1,26 +1,51 @@
 package com.irelandlight.mapper;
 
-import com.irelandlight.controller.BaseJunitTest;
-import com.irelandlight.vo.GoodsDetail;
+import com.irelandlight.model.GoodsImage;
 import org.junit.Test;
 
 import javax.annotation.Resource;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by mr.w on 2016/12/11.
+ * Created by mr.w on 2016/12/20.
  */
-public class GoodsDetailMapperTest extends BaseJunitTest{
+public class GoodsDetailMapperTest {
     @Resource
     private GoodsDetailMapper goodsDetailMapper;
-    @Test
-    public void selectGoodsDetail() throws Exception {
-        List<GoodsDetail> list=goodsDetailMapper.selectGoodsDetail(1L);
-        System.out.print(list);
+    @Resource
 
+    @Test
+    public void queryGoodsImage() throws Exception {
+        List<GoodsImage> list=goodsDetailMapper.queryGoodsImage(2);
+        for (GoodsImage goodsImage:list) {
+            System.out.print(list);
+        }
+
+    }
+
+    @Test
+    public void queryGoodsDetail() throws Exception {
+
+    }
+
+    @Test
+    public void qureySizePrice() throws Exception {
+
+    }
+
+    @Test
+    public void queryCommentGoods() throws Exception {
+
+    }
+
+    @Test
+    public void queryComments() throws Exception {
+
+    }
+
+    @Test
+    public void addComment() throws Exception {
     }
 
 }
