@@ -17,12 +17,9 @@
   <result column="goodsStatus" property="goodsStatus"/>
   <result column="goodsImgUrl" property="goodsImgUrl"/>
 </collection>
-
 </resultMap>
-  
  <!--查找某个用户的所有订单详情-->
 <select id="findOrderListByConsumerId"  resultMap="OrderGoodsResultMap">
-
   SELECT tb_order.id orderId,
   tb_order.status orderStatus,
   tb_goods.id goodsId,
@@ -62,7 +59,6 @@ WHERE tb_order.id = tb_order_goods_relation.order_id
   AND tb_order.consumer_id = #{consumerId}
   AND tb_order.status = #{orderStatus}
 </select>
-
  <!-- 查找待评价状态订单商品信息-->
 <select id="findNotCommentGoodsByConsumerId" resultMap="OrderGoodsResultMap">
    SELECT tb_order.id orderId,

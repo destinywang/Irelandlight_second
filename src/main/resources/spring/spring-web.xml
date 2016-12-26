@@ -41,7 +41,6 @@
         <property name="prefix" value="/WEB-INF/vm/"/>
         <property name="suffix" value=".vm"/>
     </bean>
-
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="com.irelandlight.controller"/>
 </beans>

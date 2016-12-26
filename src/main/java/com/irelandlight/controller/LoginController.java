@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
  * Created by as on 2016/12/18.
  */
 @Controller
-
 public class LoginController {
     @Resource
     private LoginService loginService;
@@ -27,9 +26,9 @@ public class LoginController {
     public String login(HttpSession session, @RequestParam("username")String userName, String password)throws  Exception{
         //在session中保存用户身份信息
         session.setAttribute("userName",userName);
-        //校验用户名，密码,正确返回true
-        boolean s = loginService.findOneByUserName(userName,password);
-        if (s){
+        //校验用户名，密码,正确返回0
+        int s = loginService.findOneByUserName(userName,password);
+        if (s==0){
             return "success";
         }
         else return "redirect:login.action";

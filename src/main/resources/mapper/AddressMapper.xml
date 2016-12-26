@@ -62,6 +62,6 @@
 
     <!--删除地址-->
     <update id="deleteAddress" parameterType="java.lang.Long">
-        UPDATE tb_address SET visibility = 0 WHERE id = #{adderssId}
+        UPDATE tb_address SET visibility = 0 WHERE tb_address.id = #{addressId}
     </update>
 </mapper>

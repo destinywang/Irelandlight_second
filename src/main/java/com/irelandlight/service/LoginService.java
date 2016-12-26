@@ -13,5 +13,5 @@ import java.util.Map;
 public interface LoginService {
 
     //用户身份验证
-    public boolean findOneByUserName(@Param("userName")String userName,String passWord)throws Exception;
+    public int findOneByUserName(@Param("userName")String userName,String password)throws Exception;
 }

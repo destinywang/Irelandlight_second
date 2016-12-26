@@ -5,6 +5,7 @@ import com.irelandlight.model.Order;
 import com.irelandlight.model.vo.OrderShow;
 import com.irelandlight.service.OrderService;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @Transactional
 public class OrderServiceImpl implements OrderService{
     @Resource
+    @Lazy(true)
     private OrderMapper orderMapper;
 
     //查询全部订单

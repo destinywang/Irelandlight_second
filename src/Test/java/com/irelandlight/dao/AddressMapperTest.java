@@ -58,6 +58,6 @@ public class AddressMapperTest extends BaseJunitTest{
 
     @Test
     public void testDeleteAddress()throws Exception{
-        addressMapper.deleteAddress(7L);
+        addressMapper.deleteAddress(1L);
     }
 }

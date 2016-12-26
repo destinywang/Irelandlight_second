@@ -1,11 +1,23 @@
 package com.irelandlight.model.vo;
 
+import java.util.Date;
+
 /**
  * Created by as on 2016/12/18.
  */
 public class User {
     private String userName;
-    private String passWord;
+    private String password;
+    private String telephone;
+    private Date birthday;
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
     public String getUserName() {
         return userName;
@@ -15,19 +27,29 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", password='" + password + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", birthday=" + birthday +
                 '}';
     }
 }

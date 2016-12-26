@@ -17,8 +17,11 @@ WHERE tb_consumer.id = #{consumerId}
 </select>
 
   <!--修改用户信息-->
-  <update id="updateNickName"  parameterType="com.irelandlight.model.vo.PersonalData">
-      UPDATE tb_consumer SET nick_name = #{nickName} WHERE tb_consumer.id = #{consumerId}
+  <update id="updateNickName" >
+      UPDATE tb_consumer SET
+      tb_consumer.nick_name = #{personalData.nickName},
+      tb_consumer.gender = #{personalData.gender}
+      WHERE tb_consumer.id = #{consumerId};
   </update>
   
 </mapper>

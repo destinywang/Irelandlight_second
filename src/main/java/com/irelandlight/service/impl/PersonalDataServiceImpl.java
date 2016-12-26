@@ -1,5 +1,6 @@
 package com.irelandlight.service.impl;
 
+import com.irelandlight.manager.PersonalDataManager;
 import com.irelandlight.model.vo.PersonalData;
 import com.irelandlight.service.PersonalDataService;
 import org.apache.ibatis.annotations.Param;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by as on 2016/12/13.
@@ -24,13 +26,15 @@ public class PersonalDataServiceImpl implements PersonalDataService{
     @Lazy(true)
     private PersonalDataService personalDataService;
 
+    private PersonalDataManager personalDataManager;
+
     public List<PersonalData> findPersonalDataByConsumerId(@Param("consumerId") Long consumerId) throws Exception{
 
         return personalDataService.findPersonalDataByConsumerId(consumerId);
     }
 
-    public boolean updateNickName(PersonalData personalData,@Param("consumerId")Long consumerId) throws Exception {
-        return true;
+    public Map<String,Object> updateNickName(@Param("personalData")PersonalData personalData, @Param("consumerId")Long consumerId) throws Exception {
+        return personalDataManager.updateNickName(personalData,consumerId);
     }
 
 

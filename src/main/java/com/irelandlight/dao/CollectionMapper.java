@@ -15,6 +15,6 @@ public interface CollectionMapper {
     public List<CollectionShow> findCollectionListByConsumerId(Long consumerId)throws Exception;
 
     //删除收藏商品
-    public void deleteCollection(@Param("collectionId")Long collectionId)throws Exception;
+    public int deleteCollection(@Param("collectionId")Long collectionId);
 
 }

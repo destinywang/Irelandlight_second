@@ -13,6 +13,6 @@ public interface HistoryMapper {
     public List<HistoryShow> findHistoryListByConsumerId(Long consumerId)throws Exception;
 
     //删除浏览记录
-    public void deleteHistory(@Param("historyId")Long historyId)throws Exception;
+    public int deleteHistory(@Param("historyId")Long historyId);
 
 }

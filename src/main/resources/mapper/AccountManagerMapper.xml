@@ -4,10 +4,36 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.irelandlight.dao.AccountManagerMapper">
     <!-- 为Dao方法提供sql语句配置 -->
-
+   <!--查询账户信息-->
     <select id="findAccountInfoByConsumerId" resultType="com.irelandlight.model.vo.AccountShow">
-
+SELECT tb_consumer.head_img_url,
+  tb_consumer.user_name,
+  tb_consumer.nick_name,
+  tb_consumer.gender,
+  tb_consumer.birthday,
+  tb_consumer.telephone,
+  tb_consumer.email
+FROM tb_consumer
+WHERE tb_consumer.visibility=0
+AND tb_consumer.id=#{consumerId}
     </select>
+    <!--查找密码-->
+<select id="findPassword" parameterType="java.lang.Long">
+    SELECT tb_consumer.password
+    FROM tb_consumer
+    WHERE tb_consumer.id = #{consumerId}
+</select>
+    <!--修改密码-->
+    <update id="changePassword">
+        UPDATE tb_consumer
+        SET tb_consumer.password = #{1}
+        WHERE tb_consumer.id = #{0}
+    </update>
+    <!--修改手机-->
+    <update id="changeTelephone">
+        UPDATE tb_consumer
+        SET tb_consumer.telephone = #{1}
+        WHERE tb_consumer.id = #{0}
+    </update>
 
-  
 </mapper>

@@ -5,6 +5,7 @@ import com.irelandlight.model.vo.CollectionShow;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by as on 2016/12/9.
@@ -16,5 +17,5 @@ public interface CollectionService {
     public List<CollectionShow> findCollectionListByConsumerId(Long consumerId)throws Exception;
 
     //删除收藏商品
-    public void deleteCollection(@Param("consumerId")Long consumerId)throws Exception;
+    public Map<String,Object> deleteCollection(@Param("collectionId")Long collectionId)throws Exception;
 }

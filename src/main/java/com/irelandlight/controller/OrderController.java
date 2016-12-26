@@ -19,40 +19,42 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/personOrder")
-public class OrderController {
+public class OrderController{
+
     private static ThreadLocal<Long> consumerId = new ThreadLocal<Long>();
 
 
+    static {
+        consumerId.set(1001L);
+    }
     @Resource
     private OrderService orderService;
 
+
     //查询全部订单
-    //返回string 逻辑是图名
+    //返回string 逻辑视图名
     @ResponseBody
     @RequestMapping(value = "/findAllOrderList" , method= RequestMethod.POST)
-    public String findOrderListByConsumerId(@Param("orderShow") OrderShow orderShow,
-                                            HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String findOrderListByConsumerId( HttpServletRequest request, HttpServletResponse response) throws Exception{
         List<OrderShow> orderList = orderService.findOrderListByConsumerId(1002L);
         //将查询到的订单保存在request作用域中，转发后可以获取到
         request.setAttribute("orderList",orderList);
         return "findAllOrderList";
+
     }
     //查找某用户的某种状态的订单
     @ResponseBody
     @RequestMapping(value = "/findOneStatusOrder" , method= RequestMethod.POST)
-    public String findOneStatusOrderByConsumerId(@Param("orderShow") OrderShow orderShow,
-                                                 HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String findOneStatusOrderByConsumerId(HttpServletRequest request, HttpServletResponse response) throws Exception{
         List<OrderShow> orderList = orderService.findOneStatusOrderByConsumerId(1002L,1);
-        //将查询到的订单保存在request作用域中，转发后可以获取到
         request.setAttribute("orderList",orderList);
         return "findOneStatusOrder";
     }
 
     //查找待评价订单信息
     @ResponseBody
-    @RequestMapping(value = "/findNotCommentGoods" , method= RequestMethod.POST)
-    public String findNotCommentGoodsByConsumerId(@Param("orderShow") OrderShow orderShow,
-                                                  HttpServletRequest request, HttpServletResponse response) throws Exception{
+    @RequestMapping(value = "/findNotCommentGoods" , method = RequestMethod.POST)
+    public String findNotCommentGoodsByConsumerId(HttpServletRequest request, HttpServletResponse response) throws Exception{
         //查询用户1002的商品状态为0，待评价的goodsList
         List<OrderShow> orderList = orderService.findOneStatusOrderByConsumerId(1002L,0);
         //将查询到的订单保存在request作用域中，转发后可以获取到

@@ -51,3 +51,4 @@ src/main/java/com/irelandlight/enums/
 src/main/java/com/irelandlight/exception/
 src/main/java/com/irelandlight/manager/
 src/main/java/com/irelandlight/util/
+!/src/main/java/com/irelandlight/manager/

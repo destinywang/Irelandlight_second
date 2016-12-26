@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.enterprise.inject.New;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -19,13 +21,14 @@ public class LoginServiceImpl implements LoginService{
     @Resource
     private LoginMapper loginMapper;
 
-    public boolean findOneByUserName(@Param("userName") String userName,String passWord) throws Exception {
+    public int findOneByUserName(@Param("userName") String userName,String password) throws Exception {
         User user = loginMapper.findOneByUserName(userName);
-        if(user.getPassWord().equals(passWord)){
-            return true;
-        }
 
-        else return false;
+        //密码错误
+        if(user.getPassword().equals(password)){
+            return 1;
+        }
+        else return 0;
 
     }
 }

@@ -16,7 +16,7 @@ public interface PersonalDataMapper {
     public List<PersonalData> findPersonalDataByConsumerId(@Param("consumerId")Long consumerId) throws Exception;
 
     //修改资料
-    public boolean updateNickName(@Param("personalData") PersonalData personalData,@Param("consumerId")Long consumerId)throws Exception;
+    public int updateNickName(@Param("personalData")PersonalData personalData,@Param("consumerId")Long consumerId);
 
 
 }

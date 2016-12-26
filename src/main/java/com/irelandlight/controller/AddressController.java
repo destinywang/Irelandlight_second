@@ -7,6 +7,7 @@ import com.irelandlight.service.AddressService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,30 +25,29 @@ public class AddressController {
 
 
     static {
-        consumerId.set(1002L);
+        consumerId.set(1001L);
     }
 
     @Resource
     private AddressService addressService;
 
-    @RequestMapping("/selectConsumer")
-    public void findConsumerNameById(Long consumerId, HttpServletRequest request, HttpServletResponse response)throws Exception{
+    @RequestMapping(value ="selectConsumer", method= RequestMethod.POST)
+    public void findConsumerNameById( HttpServletRequest request, HttpServletResponse response)throws Exception{
 
-       addressService.findConsumerNameById(1001L);
-
+       String consumerName = addressService.findConsumerNameById(1001L);
+        request.setAttribute("consumerName",consumerName);
     }
 
     //管理地址
-    @RequestMapping("/Address")
+    @RequestMapping(value ="addressManager", method= RequestMethod.POST)
     public void findAddressListByConsumerId( HttpServletRequest request, HttpServletResponse response)throws Exception{
 
         List<AddressShow> addressShowList = addressService.findAddressListByConsumerId(consumerId.get());
-        request.getRequestDispatcher("/address.action").forward(request,response);
-
+        request.setAttribute("addressShowList",addressShowList);
     }
 
     //添加地址
-    @RequestMapping("/addAddress")
+    @RequestMapping("addAddress")
     public void addNewAddress(@Param(value = "address")Address address, HttpServletRequest request, HttpServletResponse response)throws Exception{
         address.setConsumerId(consumerId.get());
         addressService.addNewAddress(address);
@@ -63,7 +63,6 @@ public class AddressController {
         for (int i=0;i<addressIdList.size();i++){
             addressService.deleteAddress(addressIdList.get(i));
         }
-        //转发
         request.getRequestDispatcher("/address/deleteAddress.action").forward(request,response);
     }
 
