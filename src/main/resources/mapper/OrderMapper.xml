@@ -25,12 +25,56 @@
     <select id="selectCanceledOrder" resultType="java.lang.Integer" >
         SELECT COUNT(*) FROM tb_order WHERE status=4
     </select>
-    <!--查询订单列表-->
-    <select id="selectOrderList" resultType="com.irelandlight.vo.OrderVo">
-       SELECT order_number,nick_name,tb_order.create_time,tb_order.status,tb_order.price
-       FROM tb_order,tb_consumer
-       WHERE tb_order.consumer_id=tb_consumer.id
+
+    <!--每月订单数量-->
+    <select id="selectOrderMonth" resultType="java.util.HashMap">
+        select month(create_time) mon,count(*) orderCount
+        from tb_order
+        where year(create_time)=year(sysdate())
+        group by month(create_time);
     </select>
+
+    <!--查询订单列表-->
+    <resultMap type="com.irelandlight.vo.OrderVo" id="OrderGoodsResultMap">
+        <id column="id" property="OrderId"/>
+        <result column="order_number" property="orderNumber"/>
+
+        <result column="create_time" property="createTime"/>
+        <result column="status" property="status"/>
+        <result column="price" property="price"/>
+        <association property="consumer" javaType="com.irelandlight.model.Consumer">
+            <id column="consumerId" property="id"/>
+            <result column="nick_name" property="nickName"/>
+            <result column="nick_name" property="userName"/>
+        </association>
+        <collection property="orderGoodsList" ofType="com.irelandlight.vo.OrderGoods">
+            <id column="goodsId" property="goodsId"/>
+            <result column="goodsName" property="goodsName"/>
+        </collection>
+
+    </resultMap>
+    <select id="selectOrderListByResultMap" resultMap="OrderGoodsResultMap">
+       SELECT tb_order.id,
+       tb_order.order_number,
+       tb_consumer.id consumerId,
+       tb_consumer.nick_name,
+       tb_order.create_time,
+       tb_order.status,
+       tb_order.price,
+       tb_goods.name goodsName
+       ,tb_goods.id goodsId
+        FROM tb_order,tb_consumer,tb_order_goods_relation,tb_goods
+        WHERE tb_order.consumer_id=tb_consumer.id
+        AND tb_order_goods_relation.goods_id = tb_goods.id
+        AND tb_order_goods_relation.order_id = tb_order.id
+    </select>
+
+    <!--根据id删除订单-->
+    <delete id="deleteOrderById" parameterType="java.lang.Integer">
+        DELETE tb_order.*
+        FROM tb_order
+        WHERE id=#{id}
+    </delete>
     <!--修改订单-->
     <update id="upDateOrder" parameterType="com.irelandlight.vo.OrderVo">
 

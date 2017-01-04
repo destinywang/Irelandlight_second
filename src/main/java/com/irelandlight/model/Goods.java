@@ -1,6 +1,7 @@
 package com.irelandlight.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created  with Intellij IDEA.
@@ -10,27 +11,30 @@ import java.util.Date;
  * Description: 商品表 .
  */
 public class Goods {
-    private Integer id;                //蛋糕id
+    private Long id;                //id
     private Date createTime;        //创建时间
     private Date lastUpdate;        //最后更新时间
     private Integer visibility;     //表示是否已删除
-    private Integer isPutaway;      //是否上架  0表示未上架，1表示上架
+    private Integer isPutaway;      //0表示未上架，1表示上架
     private String name;            //蛋糕名称
     private String description;     //蛋糕描述
-    private String perference;      //蛋糕偏好
+    private String preference;      //蛋糕偏好
     private String use;             //蛋糕用途
     private String taste;           //蛋糕口味
     private Integer quantity;       //库存
     private Integer saleCount;      //销售量
-    private String ststus;          //销售量
+    private Integer status;         //商品的状态
     private Integer weight;             //权重
+    //扩展size
+    private  List<GoodsSize> goodsSizeList;     //商品的尺寸列表
+    private  List<GoodsImage> goodsImageList;      //商品的图片列表
 
-    public Integer getId() {
-        return id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public Date getCreateTime() {
@@ -81,12 +85,12 @@ public class Goods {
         this.description = description;
     }
 
-    public String getPerference() {
-        return perference;
+    public String getPreference() {
+        return preference;
     }
 
-    public void setPerference(String perference) {
-        this.perference = perference;
+    public void setPreference(String preference) {
+        this.preference = preference;
     }
 
     public String getUse() {
@@ -121,19 +125,40 @@ public class Goods {
         this.saleCount = saleCount;
     }
 
-    public String getStstus() {
-        return ststus;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStstus(String ststus) {
-        this.ststus = ststus;
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 
     public int getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", lastUpdate=" + lastUpdate +
+                ", visibility=" + visibility +
+                ", isPutaway=" + isPutaway +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", preference='" + preference + '\'' +
+                ", use='" + use + '\'' +
+                ", taste='" + taste + '\'' +
+                ", quantity=" + quantity +
+                ", saleCount=" + saleCount +
+                ", status=" + status +
+                ", weight=" + weight +
+                '}';
     }
 }

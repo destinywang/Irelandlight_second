@@ -12,22 +12,23 @@ import java.util.Map;
 public interface OrderMapper {
     //订单统计
     //查找未处理订单数   状态0
-    public int selectUnhandleOrder();
+    public int selectUnhandleOrder()throws Exception;
     //查询未支付订单数   状态1
-    public int selectUnpayOrder();
+    public int selectUnpayOrder()throws Exception;
     //查询未派送订单数  状态2
-    public int selectUndispatchOrder();
+    public int selectUndispatchOrder()throws Exception;
     //查询交易成功订单数 状态3
-    public int selectSucceedOrder();
+    public int selectSucceedOrder()throws Exception;
     //查询被取消订单数  状态4
-    public int selectCanceledOrder();
+    public int selectCanceledOrder()throws Exception;
     //查询每月的订单总数
-    List<Map<Object,Object>> selectMonthOrderCount();
+    List<Map<Integer,Integer>> selectOrderMonth()throws Exception;
 
     //查询订单列表
-    List<OrderVo> selectOrderList();
+    List<OrderVo> selectOrderListByResultMap()throws Exception;
 
-
+    //根据id删除订单
+    void deleteOrderById(Integer id)throws Exception;
 
 
 

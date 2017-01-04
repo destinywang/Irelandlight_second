@@ -30,15 +30,131 @@
         SELECT * FROM tb_goods WHERE is_putaway=0
     </select>
 
+    <!--查询商品详情-->
+    <resultMap type="com.irelandlight.vo.GoodsInfo" id="GoodsInfoResultMap">
+        <id column="id" property="goodsId"/>
+        <result column="name" property="goodsName"/>
+        <result column="description" property="goodsDescription"/>
+        <result column="weight" property="goodsWeight"/>
+        <result column="url" property="goodsUrl"/>
+        <collection property="goodsSizePrices" ofType="com.irelandlight.vo.GoodsSizePrice">
+            <id column="goodsSizeId" property="id"/>
+            <result column="size" property="goodsSize"/>
+            <result column="price" property="goodsPrice"/>
+        </collection>
 
+    </resultMap>
+    <select id="selectGoodsInfo" resultMap="GoodsInfoResultMap">
+        SELECT tb_goods.id ,
+        tb_goods.name ,
+        tb_goods.description,
+        tb_goods_size.id goodsSizeId,
+        tb_goods.weight,
+        tb_goods_image.url ,
+        tb_goods_size.price,
+        tb_goods_size.size
+        FROM tb_goods_size,tb_goods,tb_goods_image
+        WHERE tb_goods_size.goods_id=tb_goods.id AND
+         tb_goods.id=tb_goods_image.goods_id AND
+         tb_goods_image.position=1
+    </select>
+<!--按id上架-->
+    <sql id="update1">
+        UPDATE tb_goods
+          SET  is_putaway=1
+          WHERE id=#{id}
+    </sql>
+    <sql id="update2">
+        UPDATE tb_goods_size
+        SET  is_putaway=1
+        WHERE goods_id=#{goods_id}
+    </sql>
+    <update id="updateGoodsToPutawayById" parameterType="java.lang.Integer">
+          <include refid="update1"></include>
+    </update>
+    <update id="updateGoodsSizeToPutawayById" parameterType="java.lang.Integer">
+        <include refid="update2"></include>
+    </update>
+    <!--按id下架-->
+    <update id="updateGoodsToUnPutawayById" parameterType="java.lang.Integer">
+         UPDATE tb_goods
+          SET  is_putaway=0
+          WHERE id=#{id}
+    </update>
+    <update id="updateGoodsSizeToUnPutawayById" parameterType="java.lang.Integer">
+        UPDATE tb_goods_size
+        SET  is_putaway=0
+        WHERE goods_id=#{goods_id}
+    </update>
+    <!--ids批量上下架-->
+    <update id="updateGoodsToPutawayByids">
+        UPDATE tb_goods
+        SET  tb_goods.is_putaway=#{isput}
+        WHERE tb_goods.id In
+        <foreach collection="ids" item="id" open="(" separator="," close=")" >
+            #{id}
+        </foreach>
+    </update>
+    <!--对商品尺寸上下架-->
+    <update id="updateGoodsSizeToPutaway">
+        UPDATE tb_goods_size
+        SET  tb_goods_size.is_putaway=#{isput}
+        WHERE tb_goods_size.goods_id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")" >
+            #{id}
+        </foreach>
+    </update>
+    <!--添加商品-->
     <insert id="insertGoods" parameterType="com.irelandlight.model.Goods">
+        <selectKey keyProperty="goods.id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO tb_goods
         (create_time,last_update,visibility,is_putaway,tb_goods.name,description,preference,
         tb_goods.use,taste,quantity,sale_count,weight,tb_goods.status)
-        VALUE (now(),sysdate(),0,0,
+        VALUE (now(),now(),0,0,
         #{goods.name},#{goods.description},#{goods.preference},
         #{goods.use},#{goods.taste},#{goods.quantity},
         #{goods.saleCount},#{goods.weight},#{goods.status})
-
     </insert>
+    <!--添加商品尺寸-->
+    <insert id="insertGoodsSize">
+        INSERT INTO tb_goods_size
+        ( create_time,
+        last_update,
+        visibility,
+        goods_id,
+        is_putaway,
+        size,
+        price) VALUES
+        <foreach collection="goodsSizeList" item="goodsSize" open="" separator="," close="">
+         (now(),now(),0,#{goodsSize.goodsId},0,
+            #{goodsSize.size},#{goodsSize.price})
+        </foreach>
+    </insert>
+    <!--添加商品图片-->
+        <insert id="insertIntoGoodsImg">
+            INSERT INTO tb_goods_image(create_time,last_update,goods_id,url,tb_goods_image.position) VALUES
+            <foreach collection="imgUrlMap" item="position" index="imgUrl" open="" separator="," close="">
+                (now(),sysdate(),#{id},#{imgUrl}, #{position})
+            </foreach>
+        </insert>
+    <!--修改商品信息-->
+    <update id="updateGoods">
+        UPDATE tb_goods
+        SET  tb_goods.name=#{goods.name},tb_goods.weight=#{goods.weight},
+         tb_goods.description=#{goods.description},
+         tb_goods.`use`=#{goods.use},tb_goods.preference=#{goods.preference},
+        tb_goods.taste=#{goods.taste}
+        WHERE tb_goods.id=#{goods.id}
+    </update>
+    <!--修改商品尺寸-->
+    <update id="updateGoodsSize">
+        UPDATE tb_goods_size
+        SET
+        tb_goods_size.last_update=now(),
+        tb_goods_size.price=#{goodsSize.price},
+        tb_goods_size.size=#{goodsSize.size}
+        WHERE tb_goods_size.id=#{goodsSize.id}
+    </update>
 </mapper>

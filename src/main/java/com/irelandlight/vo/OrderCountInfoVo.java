@@ -1,7 +1,11 @@
 package com.irelandlight.vo;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2016/12/14.
+ * 统计商品数量和评论总数页面的信息
  */
 public class OrderCountInfoVo {
     //未处理订单数   状态0
@@ -14,7 +18,8 @@ public class OrderCountInfoVo {
     private int SucceedOrderCount;
     //被取消订单数  状态4
     private int CanceledOrderCount;
-
+    //今年每月的订单数量
+    private List<Map<Integer,Integer>> ord
     public int getUnHandleOrderCount() {
         return unHandleOrderCount;
     }

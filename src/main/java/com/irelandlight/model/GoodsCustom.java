@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Administrator on 2016/12/12.
  */
 public class GoodsCustom extends Goods{
-    private Integer id;
+    private long id;
     private Date creatTime;
     private Date lastUpdate;
     private int visibility;
@@ -16,12 +16,12 @@ public class GoodsCustom extends Goods{
     private double price;
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    @Override
-    public void setId(Integer id) {
+
+    public void setId(long id) {
         this.id = id;
     }
 
